@@ -1,0 +1,9 @@
+* Java Stacks and Queues Notes 
+
+** Stacks
+Stacks work with a policy known as last-in-first-out, as its purpose is to remove the item that has been there for the /LEAST/ amount of time.Stacks work with a policy known as last-in-first-out,  as its purpose is to remove the item that has been there for the /LEAST/ amount of time.
+It uses methods like push and pop to add or remove, respectively. It also has a peek which previews the next element.
+Can be implemented with arrays and linked lists.
+- An example of a stack is going back into your search history.
+** Queues 
+Queues work with a policy known as first-in-first-out, as its purpose is to remove the item that has been there for the *MOST* amount of time.

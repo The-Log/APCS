@@ -1,0 +1,25 @@
+Time :0  Time :4
+        customersTotalWaitTimeStr:6+2-0
+Time :4  customersTotalWaitTimeStr:4+2-2
+Time :6  customersTotalWaitTimeStr:5+2-6
+Time :10  customersTotalWaitTimeStr:5+2-7
+Time :11  customersTotalWaitTimeStr:2+2-10
+Time :14  customersTotalWaitTimeStr:7+2-13
+Time :17  customersTotalWaitTimeStr:2+2-14
+Time :18  customersTotalWaitTimeStr:3+2-16
+Time :20  customersTotalWaitTimeStr:2+2-20
+Time :24  customersTotalWaitTimeStr:2+2-22
+Time :26  customersTotalWaitTimeStr:3+2-24
+Time :28  customersTotalWaitTimeStr:5+2-28
+Time :32  customersTotalWaitTimeStr:4+2-28
+Time :32  customersTotalWaitTimeStr:5+2-31
+Time :35  customersTotalWaitTimeStr:6+2-31
+Time :35  customersTotalWaitTimeStr:5+2-33
+Time :37  customersTotalWaitTimeStr:3+2-37
+Time :41  customersTotalWaitTimeStr:2+2-41
+Time :45  customersTotalWaitTimeStr:5+2-45
+Time :49  customersTotalWaitTimeStr:6+2-49
+Time :53  customersTotalWaitTimeStr:6+2-50
+Time :54  customersTotalWaitTimeStr:7+2-53
+Time :57  customersTotalWaitTimeStr:7+2-53
+Time :57  customersTotalWaitTimeStr:6+2-56
