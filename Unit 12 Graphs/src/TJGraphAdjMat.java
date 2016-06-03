@@ -5,7 +5,7 @@
 import java.util.*;
 import java.io.*;
 
-public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
+public class TJGraphAdjMat implements AdjacencyMatrix,Warshall,Floyd
 {
    private int[][] grid = null;   //adjacency matrix representation
    private Map<String, Integer> vertices = null;
@@ -21,21 +21,21 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
 
    }
    public boolean isEdge(int from, int to){
-      if(grid[from][to] == 1)
+      if(grid[from][to] < 1000)
          return true;
       return false;
    }
    public boolean isEdge(String f, String t){
       int from = vertices.get(f);
       int to = vertices.get(t);
-      if(grid[from][to] == 1 )
+      if(grid[from][to] < 1000 && grid[from][to] > 0)
          return true;
       return false;
    }
    public void displayGrid(){
       for (int i = 0; i < grid.length; i++) {
          for (int j = 0; j < grid[0].length; j++) {
-            System.out.print(grid[i][j]);
+            System.out.print(grid[i][j] + " ");
          }
          System.out.println();
       }
@@ -58,17 +58,7 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
       }
       return list;
    }
-   public void allPairsReachability(){
-      for (int i = 0; i < grid.length; i++) {
-         for (int j = 0; j < grid.length; j++) {
-            for (int k = 0; k < grid.length; k++) {
-               if(grid[i][j] == 1 && grid[j][k] == 1){
-                  grid[i][k] = 1;
-               }
-            }
-         }
-      }
-   }
+
    public void readNames(String filename){
       File file = new File(filename);
       try{
@@ -92,7 +82,6 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
          for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                grid[i][j] = infile.nextInt();
-               System.out.println(grid[i][j]);
             }
          }
       }
@@ -102,20 +91,44 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
 
    }
    public void displayVertices(){
-
+      Set<String> s = vertices.keySet();
+      for (String str : s) {
+         System.out.println(vertices.get(str) + "-" + str );
+      }
+      System.out.println();
    }
 
    public int getCost(int from, int to) {
-      return 0;
+      return grid[from][to];
    }
 
    public int getCost(String from, String to) {
-      return 0;
+      return grid[vertices.get(from)][vertices.get(to)];
    }
-
+   public void allPairsReachability(){
+      for (int i = 0; i < grid.length; i++) {
+         for (int j = 0; j < grid.length; j++) {
+            for (int k = 0; k < grid.length; k++) {
+               if(grid[i][j] == 1 && grid[j][k] == 1){
+                  grid[i][k] = 1;
+               }
+            }
+         }
+      }
+   }
    public void allPairsWeighted() {
-
+      for (int i = 0; i < grid.length; i++) {
+         for (int j = 0; j < grid.length; j++) {
+            for (int k = 0; k < grid.length; k++) {
+               if (grid[i][j]  < 1000 && grid[j][k] < 1000) {
+                  if (grid[i][j] + grid[j][k] < grid[i][k])
+                     grid[i][k] = grid[i][j] + grid[j][k];
+               }
+            }
+         }
+      }
    }
+
 }
 
 interface AdjacencyMatrix
@@ -126,14 +139,14 @@ interface AdjacencyMatrix
    public void displayGrid();
    public int edgeCount();
    public List<Integer> getNeighbors(int source);
-   
-  /**********  User-friendly    **************/
+
+   /**********  User-friendly    **************/
    // public boolean isEdge(String from, String to);
-   // public Map<String, Integer> getVertices();     
+   // public Map<String, Integer> getVertices();
    // public void readNames(String fileName) throws FileNotFoundException;
    // public void readGrid(String fileName) throws FileNotFoundException;
    // public void displayVertices();
- /************* end  User-friendly   **************/
+   /************* end  User-friendly   **************/
 }
 
 interface Warshall
@@ -145,5 +158,5 @@ interface Floyd
 {
    public int getCost(int from, int to);
    public int getCost(String from, String to);
-   public void allPairsWeighted(); 
+   public void allPairsWeighted();
 }
