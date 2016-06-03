@@ -11,12 +11,14 @@ public class FloydDriver
       System.out.print("Floyd's Algorithm! Enter file of names: "); 
    											             //cities
       String fileNames = kb.next()+".txt";
+
       Scanner sc = new Scanner(new File(fileNames));
       int size = sc.nextInt();
       TJGraphAdjMat g = new TJGraphAdjMat(size);
       g.readNames(fileNames);
-      System.out.print("Enter file of the matrix: ");//citymatrixweighted
+      System.out.print("Enter file of the matrix: ");//
       String fileGrid = kb.next()+".txt";
+      //String fileGrid = "citymatrixweighted.txt";
       g.readGrid(fileGrid);
       System.out.println("\nAdjacency Matrix");
       g.displayGrid();

@@ -5,12 +5,13 @@
 import java.util.*;
 import java.io.*;
 
-public class TJGraphAdjMat implements AdjacencyMatrix //,Warshall,Floyd
+public class TJGraphAdjMat implements AdjacencyMatrix,Warshall ,Floyd
 {
    private int[][] grid = null;   //adjacency matrix representation
    private Map<String, Integer> vertices = null;
    public TJGraphAdjMat(int size){
       grid = new int[size][size];
+      vertices = new TreeMap<String, Integer>();
    }
    public void addEdge(int source, int target){
       grid[source][target] = 1;
@@ -20,7 +21,14 @@ public class TJGraphAdjMat implements AdjacencyMatrix //,Warshall,Floyd
 
    }
    public boolean isEdge(int from, int to){
-      if(grid[from][to] == 1 || grid[to][from] == 1)
+      if(grid[from][to] == 1)
+         return true;
+      return false;
+   }
+   public boolean isEdge(String f, String t){
+      int from = vertices.get(f);
+      int to = vertices.get(t);
+      if(grid[from][to] == 1 )
          return true;
       return false;
    }
@@ -49,6 +57,64 @@ public class TJGraphAdjMat implements AdjacencyMatrix //,Warshall,Floyd
          list.add(grid[source][i]);
       }
       return list;
+   }
+   public void allPairsReachability(){
+      for (int i = 0; i < grid.length; i++) {
+         for (int j = 0; j < grid.length; j++) {
+            for (int k = 0; k < grid.length; k++) {
+               if(grid[i][j] == 1 && grid[j][k] == 1){
+                  grid[i][k] = 1;
+               }
+            }
+         }
+      }
+   }
+   public void readNames(String filename){
+      File file = new File(filename);
+      try{
+         Scanner scanner = new Scanner(file);
+         int size = scanner.nextInt();
+         int i = 0;
+         while (scanner.hasNext()){
+            vertices.put(scanner.next(), i);
+            i++;
+         }
+      }
+      catch (Exception e){
+         System.out.println("error. pls type it again correctly");
+      }
+   }
+   public void readGrid(String filename){
+      File file = new File(filename);
+      try{
+         Scanner infile = new Scanner(file);
+         int size = infile.nextInt();
+         for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+               grid[i][j] = infile.nextInt();
+               System.out.println(grid[i][j]);
+            }
+         }
+      }
+      catch (Exception e){
+         System.out.println("error. pls type it again correctly");
+      }
+
+   }
+   public void displayVertices(){
+
+   }
+
+   public int getCost(int from, int to) {
+      return 0;
+   }
+
+   public int getCost(String from, String to) {
+      return 0;
+   }
+
+   public void allPairsWeighted() {
+
    }
 }
 

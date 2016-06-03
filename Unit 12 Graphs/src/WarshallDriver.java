@@ -9,13 +9,16 @@ public class WarshallDriver
       Scanner kb = new Scanner(System.in);
       System.out.print("Warshall's Algorithm! Enter file of names: "); 
    											                    //cities
-      String fileNames = kb.next()+".txt";
+      //String fileNames = kb.next()+".txt";
+      String fileNames = "cities.txt";
       Scanner sc = new Scanner(new File(fileNames));
       int size = sc.nextInt();
       TJGraphAdjMat g = new TJGraphAdjMat(size);
       g.readNames(fileNames);
+
       System.out.print("Enter file of the matrix: "); //citymatrix
-      String fileGrid = kb.next()+".txt";
+      //String fileGrid = kb.next()+".txt";
+      String fileGrid= "citymatrix.txt";
       g.readGrid(fileGrid);
       System.out.println("Adjacency Matrix");
       g.displayGrid();
@@ -42,7 +45,7 @@ public class WarshallDriver
       //Extension
       System.out.println("\n================== EXTENSION =================="); 
       System.out.println("List of every city's reachable cities: ");
-      for(String city : g.getVertices().keySet() )
+      /*for(String city : g.getVertices().keySet() )
          System.out.println(city + "--> " + g.getReachables(city) );
          
       while(true)
@@ -52,6 +55,6 @@ public class WarshallDriver
          if(from.equals("-1"))
             break;
          System.out.println(g.getReachables(from));
-      }
+      } */
    }
 }
