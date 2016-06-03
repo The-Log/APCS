@@ -21,14 +21,14 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall,Floyd
 
    }
    public boolean isEdge(int from, int to){
-      if(grid[from][to] < 1000)
+      if(grid[from][to] > 0 && grid[from][to] < 1000 )
          return true;
       return false;
    }
    public boolean isEdge(String f, String t){
       int from = vertices.get(f);
       int to = vertices.get(t);
-      if(grid[from][to] < 1000 && grid[from][to] > 0)
+      if(grid[from][to] > 0 && grid[from][to] < 1000 )
          return true;
       return false;
    }
@@ -120,8 +120,8 @@ public class TJGraphAdjMat implements AdjacencyMatrix,Warshall,Floyd
       for (int i = 0; i < grid.length; i++) {
          for (int j = 0; j < grid.length; j++) {
             for (int k = 0; k < grid.length; k++) {
-               if (grid[i][j]  < 1000 && grid[j][k] < 1000) {
-                  if (grid[i][j] + grid[j][k] < grid[i][k])
+               if(grid[i][j]  < 1000 && grid[j][k] < 1000){
+                  if(grid[i][j] + grid[j][k] < grid[i][k])
                      grid[i][k] = grid[i][j] + grid[j][k];
                }
             }
@@ -139,14 +139,14 @@ interface AdjacencyMatrix
    public void displayGrid();
    public int edgeCount();
    public List<Integer> getNeighbors(int source);
-
-   /**********  User-friendly    **************/
+   
+  /**********  User-friendly    **************/
    // public boolean isEdge(String from, String to);
-   // public Map<String, Integer> getVertices();
+   // public Map<String, Integer> getVertices();     
    // public void readNames(String fileName) throws FileNotFoundException;
    // public void readGrid(String fileName) throws FileNotFoundException;
    // public void displayVertices();
-   /************* end  User-friendly   **************/
+ /************* end  User-friendly   **************/
 }
 
 interface Warshall
@@ -158,5 +158,5 @@ interface Floyd
 {
    public int getCost(int from, int to);
    public int getCost(String from, String to);
-   public void allPairsWeighted();
+   public void allPairsWeighted(); 
 }
