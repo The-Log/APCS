@@ -12,7 +12,7 @@
          TJGraphAdjList g = new TJGraphAdjList();
          g.addVertex("A");      //if it's not there, add it.
          g.addVertex("B");
-         //g.addEdge("A", "C"); // <-- oops!  Be sure to add all the Vertices first; 
+         g.addEdge("A", "C"); // <-- oops!  Be sure to add all the Vertices first;
                                 // or else deal with it. 
          g.addVertex("C");
          g.addVertex("D");

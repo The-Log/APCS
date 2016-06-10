@@ -13,7 +13,7 @@
          Scanner kb = new Scanner(System.in);
          System.out.print("Enter file of cities and edges: "); 
       											             //cityEdgeList
-         String fileOfCities = kb.next()+".txt";
+         String fileOfCities = "cityEdgeList.txt";//kb.next()+".txt";
          Scanner sc = new Scanner(new File(fileOfCities));
          TJGraphAdjList g = new TJGraphAdjList();
          g.graphFromEdgeListData(fileOfCities);

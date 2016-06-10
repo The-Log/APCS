@@ -10,7 +10,7 @@ public class DijkstraDriver
 {
    public static void main(String[] args) throws FileNotFoundException 
    {
-      	/* Day 1 (Graphs 6):  hard-coded A-B-C-D   	*/
+      /* Day 1 (Graphs 6):  hard-coded A-B-C-D   	*/
       TJGraphAdjListWeighted graph = new TJGraphAdjListWeighted();
       graph.addVertex("A");
       graph.addVertex("B");
